@@ -1,1 +1,12 @@
 allow init sysfs_dt2w:file setattr;
+allow init debugfs:dir { search mounton };
+# We need read/write too, but is nevera allowed in external/sepolicy
+allow fsck block_device:blk_file { getattr };
+allow sysinit wifi_data_file:dir search;
+allow thermal-engine socket_device:sock_file { create setattr };
+allow init socket_device:sock_file create;
+allow init socket_device:sock_file setattr;
+
+type diag_logs, file_type, data_file_type, mlstrustedobject;
+
+
