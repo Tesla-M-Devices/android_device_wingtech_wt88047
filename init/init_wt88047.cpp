@@ -187,7 +187,7 @@ err_ret:
     return ret;
 }
 
-void init_target_properties()
+void vendor_load_properties()
 {
     char device[PROP_VALUE_MAX];
     char modem_version[IMG_VER_BUF_LEN];
