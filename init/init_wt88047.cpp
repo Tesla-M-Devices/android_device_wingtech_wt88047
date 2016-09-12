@@ -46,7 +46,6 @@
 #include "log.h"
 #include "util.h"
 
-#include "init_msm8916.h"
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
@@ -185,6 +184,13 @@ err_ret:
     return ret;
 }
 
+void gsm_properties()
+{
+    property_set("telephony.lteOnGsmDevice", "1");
+    property_set("ro.telephony.default_network", "9,1");
+    property_set("ro.telephony.ril.config", "newDialCode");
+}
+
 void vendor_load_properties()
 {
     char modem_version[IMG_VER_BUF_LEN];
@@ -205,6 +211,7 @@ void vendor_load_properties()
         property_set("ro.product.name", "2014817");
         property_set("ro.telephony.default_network", "9,1");
         property_set("telephony.lteOnCdmaDevice", "0");
+	gsm_properties();
     } else if (strcmp(board_id, "S88047D1") == 0) {
         property_set("ro.build.product", "HM2014819");
         property_set("ro.product.device", "HM2014819");
@@ -212,6 +219,7 @@ void vendor_load_properties()
         property_set("ro.product.name", "2014819");
         property_set("ro.telephony.default_network", "9,1");
         property_set("telephony.lteOnCdmaDevice", "0");
+	gsm_properties();
     } else if (strcmp(board_id, "S88047C1") == 0) {
         property_set("ro.build.product", "HM2014818");
         property_set("ro.product.device", "HM2014818");
@@ -221,6 +229,7 @@ void vendor_load_properties()
         property_set("telephony.lteOnCdmaDevice", "0");
         property_set("persist.dbg.volte_avail_ovr", "1");
         property_set("persist.dbg.vt_avail_ovr", "1");
+	gsm_properties();
     } else if (strcmp(board_id, "S88047B2") == 0) {
         property_set("ro.build.product", "HM2014821");
         property_set("ro.product.device", "HM2014821");
@@ -229,6 +238,7 @@ void vendor_load_properties()
         property_set("ro.telephony.default_network", "22,1");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("persist.radio.sglte.eons_domain", "ps");
+	gsm_properties();
     } else if (strcmp(board_id, "S88047B1") == 0) {
         property_set("ro.build.product", "HM2014812");
         property_set("ro.product.device", "HM2014812");
@@ -237,6 +247,7 @@ void vendor_load_properties()
         property_set("ro.telephony.default_network", "22,1");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("persist.radio.sglte.eons_domain", "ps");
+	gsm_properties();
     } else if ((strcmp(board_id, "S86047A1") == 0) || (strcmp(board_id, "S86047A1_CD") == 0)) {
         property_set("ro.build.product", "HM2014813");
         property_set("ro.product.device", "HM2014813");
@@ -244,6 +255,7 @@ void vendor_load_properties()
         property_set("ro.product.name", "2014813");
         property_set("ro.telephony.default_network", "9,1");
         property_set("telephony.lteOnCdmaDevice", "0");
+	gsm_properties();
     } else if ((strcmp(board_id, "S86047A2") == 0) || (strcmp(board_id, "S86047A2_CD") == 0)) {
         property_set("ro.build.product", "HM2014112");
         property_set("ro.product.device", "HM2014112");
@@ -251,6 +263,7 @@ void vendor_load_properties()
         property_set("ro.product.name", "2014112");
         property_set("ro.telephony.default_network", "9,1");
         property_set("telephony.lteOnCdmaDevice", "0");
+	gsm_properties();
     } else { /* including S88047A2 and S88047A1 */
         property_set("ro.build.product", "HM2014811");
         property_set("ro.product.device", "HM2014811");
@@ -258,6 +271,7 @@ void vendor_load_properties()
         property_set("ro.product.name", "2014811");
         property_set("ro.telephony.default_network", "9,1");
         property_set("telephony.lteOnCdmaDevice", "0");
+	gsm_properties();
     }
 
     /* Unified description and fingerprint for now */
